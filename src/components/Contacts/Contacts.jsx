@@ -32,4 +32,5 @@ Contacts.propTypes = {
     })
   ),
   onDeleteContact: PropTypes.func.isRequired,
+  children: PropTypes.node,
 };
