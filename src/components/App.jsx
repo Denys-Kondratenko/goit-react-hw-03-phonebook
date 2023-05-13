@@ -33,14 +33,9 @@ export class App extends Component {
   }
 
   addContact = newContact => {
-    const alertMessage = `${newContact.name} is already in contacts`;
-    const contactsName = this.state.contacts.map(contact => contact.name);
-
-    contactsName.includes(newContact.name)
-      ? alert(alertMessage)
-      : this.setState(prevState => ({
-          contacts: [...prevState.contacts, newContact],
-        }));
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, newContact],
+    }));
   };
 
   deleteContact = contactId => {
@@ -63,11 +58,21 @@ export class App extends Component {
     );
   };
 
+  alertMessage = name => {
+    return `${name} is already in contacts`;
+  };
+
   render() {
+    const contactsName = this.state.contacts.map(contact => contact.name);
+
     return (
       <Layout>
         <Section title="Phonebook">
-          <AddContactForm onSave={this.addContact} />
+          <AddContactForm
+            onSave={this.addContact}
+            contactsName={contactsName}
+            alertMessage={this.alertMessage}
+          />
         </Section>
         <Section firstTitle="Contacts">
           <Contacts
