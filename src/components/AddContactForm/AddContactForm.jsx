@@ -42,7 +42,11 @@ const onSubmit = (values, onSave, contactsName, alertMessage) => {
     : onSave({ id: nanoid(), name: values.name, number: values.number });
 };
 
-export const AddContactForm = ({ onSave, contactsName, alertMessage }) => {
+const alertMessage = name => {
+  return `${name} is already in contacts`;
+};
+
+export const AddContactForm = ({ onSave, contactsName }) => {
   return (
     <Formik
       initialValues={initialValues}

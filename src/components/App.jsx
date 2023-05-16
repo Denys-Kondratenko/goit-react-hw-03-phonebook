@@ -58,10 +58,6 @@ export class App extends Component {
     );
   };
 
-  alertMessage = name => {
-    return `${name} is already in contacts`;
-  };
-
   render() {
     const contactsName = this.state.contacts.map(contact => contact.name);
 
@@ -71,7 +67,6 @@ export class App extends Component {
           <AddContactForm
             onSave={this.addContact}
             contactsName={contactsName}
-            alertMessage={this.alertMessage}
           />
         </Section>
         <Section firstTitle="Contacts">
